@@ -16,16 +16,20 @@
 # Write a test that fakes the response of Cash.calculate to throw an exception
 
 
-class Vending_Machine(object):
+class VendingMachine(object):
   def __init__(self):
-		self.cash = Cash()
-		self.purchase = Purchase()
+    self.cash = Cash()
+    self.purchase = Purchase()
 		
-	def get_calculate(self):
-	  return self.cash.Calculate()
-	  
-	def get_price
-		
+  def get_calculate(self):
+    return self.cash.calculate()
+
+  def get_price(self):
+    return self.purchase.price()
+
+  def coin_drop(self, coin):
+      return True
+
 class Cash(object):
    
    def calculate(self):
@@ -33,6 +37,6 @@ class Cash(object):
    
 class Purchase(object):
   
-    def price(object):
+    def price(self):
       pass
     
