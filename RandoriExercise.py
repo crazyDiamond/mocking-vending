@@ -1,3 +1,5 @@
+# Use the classes below for this exercise
+
 # The vending machine takes Quarters(Q), Dollars($), Nickles(N) and Dimes(D).
 # The vending machine lets the user pick an Apple(.65), Orange(.75) or Banana(1.00)
 # Write a test to fake the response from Cash.calculate
@@ -12,3 +14,25 @@
 # Write a test that fakes the response of Cash.calculate for any call
 # Write a test that fakes the response of Cash.calculate for a specific call (say 1 + 1 = 2)
 # Write a test that fakes the response of Cash.calculate to throw an exception
+
+
+class Vending_Machine(object):
+  def __init__(self):
+		self.cash = Cash()
+		self.purchase = Purchase()
+		
+	def get_calculate(self):
+	  return self.cash.Calculate()
+	  
+	def get_price
+		
+class Cash(object):
+   
+   def calculate(self):
+     pass
+   
+class Purchase(object):
+  
+    def price(object):
+      pass
+    
