@@ -1,4 +1,4 @@
-# from led import LED
+from led import LED
 
 #Valid Coins
 NICKEL = "nickel"
@@ -14,10 +14,15 @@ BANANA = "banana"
 
 class VendingMachine:
 
-    def __init__(self):
+    green_light = None
+
+    def __init__(self, local_led = None):
         self.valid_coins = {NICKEL: .05, DIME: 0.1, QUARTER: 0.25, DOLLAR: 1.00}
         self.coins = []
         self.products = {APPLE: 0.65, ORANGE: 0.75, BANANA: 1.0}
+        self.green_light = local_led;
+        if self.green_light == None:
+            self.green_light = LED(LED.GREEN_LIGHT)
 
     def input_coin(self, coin):
         if coin in self.valid_coins:
@@ -37,7 +42,7 @@ class VendingMachine:
 
     def can_purchase(self, selected_product):
         if self.get_coins_value() >= self.products[selected_product]:
-            # LED.blink(2,1)
+            self.green_light.blink(1, 0.5)
             return True
         return False
 

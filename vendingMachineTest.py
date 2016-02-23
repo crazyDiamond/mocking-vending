@@ -1,6 +1,18 @@
 #Write a test for input_coin to make sure add_coins is not called when an invalid coin is entered
 #Write a test for input_coin to make sure add_coins is called when a valid coin is entered
-#Write a test for input_coin to make sure t
+#Write a test for input_coin to make sure it handles empty string
+
+#Write a test for can_purchase: selected_product = orange, mock: get coins value lt 65 cents
+#Write a test for can_purchase: selected_product = orange, mock: get coins value equal 65 cents
+#Write a test for can_purchase: selected_product = orange, mock: get coins value gt 65 cents
+
+#Mock get_coins_value to return $1.00 and write a test to turn a green light when purchasing an apple
+
+#Test it out with real vending machine
+
+
+#
+
 
 #Refactor
 
@@ -9,10 +21,26 @@ import mock
 import unittest
 from nose import tools as nt
 from vendingMachine import VendingMachine
+from led import LED
 
 class VendingMachineTest(unittest.TestCase):
+
     def setUp(self):
-        self.vm = VendingMachine()
+        self.vm_green_light_ = mock.MagicMock(spec=LED, autospec=True)
+
+        self.vm = VendingMachine(self.vm_green_light_)
+
+    @mock.patch('vendingMachine.VendingMachine.get_coins_value')
+    def test_can_purchase_must_turn_green_light_when_purchase_is_valid(self, get_coins_value_):
+        blink = mock.MagicMock(spec=LED.blink)
+        self.vm_green_light_.blink = blink
+
+        get_coins_value_.return_value = 1.00
+
+        can_purchase = self.vm.can_purchase('apple')
+
+        assert blink.called
+        nt.assert_true(can_purchase)
 
     @mock.patch('vendingMachine.VendingMachine.add_coins')
     def test_add_coins_should_not_be_called_when_coin_is_invalid(self, add_coins_):
@@ -37,6 +65,10 @@ class VendingMachineTest(unittest.TestCase):
         self.vm.input_coin('')
 
         assert not add_coins_.called
+
+
+
+
 
 
 
