@@ -1,12 +1,12 @@
 from led import LED
 
-#Valid Coins
+# Valid Coins
 NICKEL = "nickel"
 DIME = "dime"
 QUARTER = "quarter"
 DOLLAR = "dollar"
 
-#Products
+# Products
 APPLE = "apple"
 ORANGE = "orange"
 BANANA = "banana"
@@ -16,12 +16,13 @@ class VendingMachine:
 
     green_light = None
 
-    def __init__(self, local_led = None):
-        self.valid_coins = {NICKEL: .05, DIME: 0.1, QUARTER: 0.25, DOLLAR: 1.00}
+    def __init__(self, local_led=None):
+        self.valid_coins = {NICKEL: .05,
+                            DIME: 0.1, QUARTER: 0.25, DOLLAR: 1.00}
         self.coins = []
         self.products = {APPLE: 0.65, ORANGE: 0.75, BANANA: 1.0}
-        self.green_light = local_led;
-        if self.green_light == None:
+        self.green_light = local_led
+        if not self.green_light:
             self.green_light = LED(LED.GREEN_LIGHT)
 
     def input_coin(self, coin):
@@ -30,7 +31,6 @@ class VendingMachine:
 
     def add_coins(self, coin):
         self.coins.append(coin)
-
 
     def get_coins_value(self):
         value = 0
