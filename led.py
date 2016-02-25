@@ -1,5 +1,6 @@
 from time import sleep
 
+
 class LED:
 
     _pin = 0

@@ -1,29 +1,21 @@
 ### Mocking Randori 
 
-1) The vending machine takes Quarters(Q), Dollars($), Nickles(N) and Dimes(D). 
+# Write a test for input_coin to make sure add_coins is not called when an invalid coin is entered
+# Write a test for input_coin to make sure add_coins is called when a valid coin is entered
+# Write a test for input_coin to make sure it handles empty string
 
-2) The vending machine lets the user pick an Apple(.65), Orange(.75) or Banana(1.00)
+# Write a test for can_purchase: selected_product = orange, mock: get coins value lt 65 cents
+# Write a test for can_purchase: selected_product = orange, mock: get coins value equal 65 cents
+# Write a test for can_purchase: selected_product = orange, mock: get
+# coins value gt 65 cents
 
-3) Write a test to fake the response from Cash.calculate 
+# Mock get_coins_value to return $1.00 and write a test to turn a green
+# light when purchasing an apple
 
-4) Write a test to fake the response from Purchase.price
+# Test it out with real vending machine
 
-5) Write a test that mocks the constructor of Cash, replaceing Cash with a Mock
 
-6) Write a test that mocks the constructor of Purchase, replacing Purchase with a Mock
+#
 
-7) Write a test that detects the arguments of Cash.calculate
 
-8) Write a test that detects the arguments of Purchase.price
-
-9) Write a test that validates money in vs price in Vending_Machine.validate
-
-10) Vending_Machine.validate returns true or false
-
-11) Write a test that detects the arguments of Cash.calculate
-
-12) Write a test that fakes the response of Cash.calculate for any call
-
-13) Write a test that fakes the response of Cash.calculate for a specific call (say 1 + 1 = 2)
-
-14) Write a test that fakes the response of Cash.calculate to throw and exception
+# Refactor
