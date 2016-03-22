@@ -16,6 +16,14 @@ We've got a couple problems, though:
 
 This legacy codebase has a few gaps in its test coverage, and we'd really like to make sure a few key scenarios are well-tested before the next big release.
 
+You can view test coverage by running:
+
+```
+$ nosetests
+...
+$ open cover/index.html
+```
+
 ### `input_coin`
 
 - Write a test for `input_coin` to make sure `add_coins` is not called when an invalid coin is entered.
