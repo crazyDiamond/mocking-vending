@@ -7,6 +7,11 @@ We've got a couple problems, though:
 1. We're missing some test coverage around a couple key methods
 2. We need to wire up some code for LEDs, but don't have access to the physical hardware yet.
 
+## Get Started
+
+1. Install dependencies: `~$ pip3 install -r requirements.txt`
+2. Run tests: `~$ nosetests-3.4` (or maybe just `nosetests`)
+
 ## Add Test Coverage
 
 This legacy codebase has a few gaps in its test coverage, and we'd really like to make sure a few key scenarios are well-tested before the next big release.
