@@ -1,7 +1,7 @@
 #!/usr/bin/python
-import vendingMachine
+import vending_machine
 
-x = vendingMachine.VendingMachine()
+x = vending_machine.VendingMachine()
 run = True
 
 print(30 * '-')
@@ -32,11 +32,11 @@ while not selected_product:
 
     choice = input("Select product [A,O,B]: ")
     if choice == "A":
-        selected_product = vendingMachine.APPLE
+        selected_product = vending_machine.APPLE
     if choice == "O":
-        selected_product = vendingMachine.ORANGE
+        selected_product = vending_machine.ORANGE
     if choice == "B":
-        selected_product = vendingMachine.BANANA
+        selected_product = vending_machine.BANANA
 
 while not terminate:
     print("")
@@ -48,13 +48,13 @@ while not terminate:
     choice = input("Input coin [N,D,Q,$]: ")
 
     if choice == "N":
-        x.input_coin(vendingMachine.NICKEL)
+        x.input_coin(vending_machine.NICKEL)
     elif choice == "D":
-        x.input_coin(vendingMachine.DIME)
+        x.input_coin(vending_machine.DIME)
     elif choice == "Q":
-        x.input_coin(vendingMachine.QUARTER)
+        x.input_coin(vending_machine.QUARTER)
     elif choice == "$":
-        x.input_coin(vendingMachine.DOLLAR)
+        x.input_coin(vending_machine.DOLLAR)
     elif choice == "X":
         print("Exit")
         terminate = True
