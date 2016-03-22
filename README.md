@@ -10,7 +10,7 @@ We've got a couple problems, though:
 ## Get Started
 
 1. Install dependencies: `~$ pip3 install -r requirements.txt`
-2. Run tests: `~$ nosetests-3.4` (or maybe just `nosetests`)
+2. Run tests: `~$ nosetests`
 
 ## Add Test Coverage
 
