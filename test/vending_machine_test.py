@@ -1,6 +1,7 @@
 import mock
 import unittest
 from nose import tools as nt
+import vending_machine
 from vending_machine import VendingMachine
 from led import LED
 
@@ -8,14 +9,14 @@ from led import LED
 class VendingMachineTest(unittest.TestCase):
 
     def setUp(self):
-        self.vm_green_light_ = mock.MagicMock(spec=LED, autospec=True)
+        self.vm_green_light = mock.MagicMock(spec=LED, autospec=True)
 
-        self.vm = VendingMachine(self.vm_green_light_)
+        self.vm = VendingMachine(self.vm_green_light)
 
     @mock.patch('vending_machine.VendingMachine.get_coins_value')
     def test_can_purchase_must_turn_green_light_when_purchase_is_valid(self, get_coins_value_):
         blink = mock.MagicMock(spec=LED.blink)
-        self.vm_green_light_.blink = blink
+        self.vm_green_light.blink = blink
 
         get_coins_value_.return_value = 1.00
 
@@ -39,6 +40,27 @@ class VendingMachineTest(unittest.TestCase):
         self.vm.input_coin('a')
 
         assert add_coins_.called
+
+    def test_can_purchase_banana_when_coins_value_is_one_dollar(self):
+        self.vm.get_coins_value = lambda: 1.0
+
+        assert self.vm.can_purchase(vending_machine.BANANA)
+
+    def test_cannot_purchase_banana_when_coins_value_is_99_cents(self):
+        self.vm.get_coins_value = lambda: 0.99
+
+        assert not self.vm.can_purchase(vending_machine.BANANA)
+
+    def test_cannot_purchase_orange_when_coins_value_is_74_cents_(self):
+        self.vm.get_coins_value = mock.MagicMock('get_coins_value', return_value=0.74)
+
+        assert not self.vm.can_purchase(vending_machine.ORANGE)
+
+    @mock.patch('vending_machine.VendingMachine.get_coins_value')
+    def test_cannot_purchase_orange_when_coins_value_is_64_cents_(self, get_coins_value_):
+        get_coins_value_.return_value  = 0.64
+
+        assert not self.vm.can_purchase(vending_machine.APPLE)
 
     @mock.patch('vending_machine.VendingMachine.add_coins')
     def test_add_coins_should_be_able_to_handle_empty_string(self, add_coins_):
