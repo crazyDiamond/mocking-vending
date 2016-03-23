@@ -33,11 +33,13 @@ $ open cover/index.html
 
 ### `input_coin`
 
-- Write a test for `input_coin` to make sure `add_coins` is not called when an invalid coin is entered.
-- Write a test for `input_coin` to make sure `add_coins` is called when a valid coin is entered
-- Write a test for `input_coin` to make sure it handles empty strings correctly
+Vending machines are being fooled with non-coin items (washers, cardboard, etc).  Write tests to validate 
+that invalid coins are not accepted, and implement code to make your tests pass.
 
+- Test that invalid coins are rejected
+- Test that valid coins are still accepted
 
+For purposes of testing it is often easier to substitute your own list of valid coins for the built in list.
 
 ## Test Against Hardware Interface
 
@@ -46,6 +48,18 @@ The UX department has determined that the machine should blink a green LED when 
 - Write a test that verifies the green light blinks when successfully purchasing a fruit.
 - Write a test that verifies the green light does not blink when can_purchase is false.
 - Test it out with the real vending machine hardware!
+
+### Deploying to real hardware
+
+- Run `./deploy.sh` from the shell
+- Remember or write down the file name and the name of the remote folder that the script told you was transferred.
+- Walk to the real hardware (also called the target) and issue the following commands at the console:
+
+```
+cd {REMOTE-FOLDER}
+tar xzf {FILE-NAME}.tgz
+./vending_panel.py
+```
 
 ## Extra Credit
 

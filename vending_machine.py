@@ -26,8 +26,7 @@ class VendingMachine:
             self.green_light = LED(LED.GREEN_LIGHT)
 
     def input_coin(self, coin):
-        if coin in self.valid_coins:
-            self.add_coins(coin)
+        self.add_coins(coin)
 
     def add_coins(self, coin):
         self.coins.append(coin)
@@ -42,7 +41,6 @@ class VendingMachine:
 
     def can_purchase(self, selected_product):
         if self.get_coins_value() >= self.products[selected_product]:
-            self.green_light.blink(1, 0.5)
             return True
         return False
 

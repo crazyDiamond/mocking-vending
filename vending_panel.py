@@ -1,8 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import vending_machine
+import RPi.GPIO as GPIO
+
+# Must be done before instantiating a VendingMachine
+GPIO.setmode(GPIO.BCM)
 
 x = vending_machine.VendingMachine()
 run = True
+
 
 print(30 * '-')
 print("   V E N D - O - M A T I C   ")
