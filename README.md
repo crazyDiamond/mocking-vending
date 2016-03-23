@@ -41,10 +41,10 @@ $ open cover/index.html
 
 ## Test Against Hardware Interface
 
-The UX department has determined that the machine should blink a green LED when vending an apple, to signify health and wellness.
+The UX department has determined that the machine should blink a green LED when vending a fruit, to signify health and wellness.
 
-- Write a test that verifies the green light blinks when purchasing an apple
-- Add the implementation of the LED blinking feature
+- Write a test that verifies the green light blinks when successfully purchasing a fruit.
+- Write a test that verifies the green light does not blink when can_purchase is false.
 - Test it out with the real vending machine hardware!
 
 ## Extra Credit
