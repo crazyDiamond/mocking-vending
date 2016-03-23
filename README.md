@@ -24,6 +24,13 @@ $ nosetests
 $ open cover/index.html
 ```
 
+### `can_purchase`
+
+- Write a test for `can_purchase(selected_product='orange')` when fewer than 65 cents have been inserted
+- Write a test for `can_purchase(selected_product='orange')` when exactly 65 cents have been inserted
+- Write a test for `can_purchase(selected_product='orange')` when more than 65 cents have been inserted
+
+
 ### `input_coin`
 
 - Write a test for `input_coin` to make sure `add_coins` is not called when an invalid coin is entered.
@@ -31,11 +38,6 @@ $ open cover/index.html
 - Write a test for `input_coin` to make sure it handles empty strings correctly
 
 
-### `can_purchase`
-
-- Write a test for `can_purchase(selected_product='orange')` when fewer than 65 cents have been inserted
-- Write a test for `can_purchase(selected_product='orange')` when exactly 65 cents have been inserted
-- Write a test for `can_purchase(selected_product='orange')` when more than 65 cents have been inserted
 
 ## Test Against Hardware Interface
 

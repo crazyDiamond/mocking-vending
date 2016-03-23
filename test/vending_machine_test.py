@@ -13,17 +13,14 @@ class VendingMachineTest(unittest.TestCase):
 
         self.vm = VendingMachine(self.vm_green_light)
 
-    @mock.patch('vending_machine.VendingMachine.get_coins_value')
-    def test_can_purchase_must_turn_green_light_when_purchase_is_valid(self, get_coins_value_):
-        blink = mock.MagicMock(spec=LED.blink)
-        self.vm_green_light.blink = blink
+    def test_add_coins_should_not_be_called_when_coin_is_invalid_using_magic_mock(self):
+        add_coins = mock.MagicMock('vending_machine.VendingMachine.add_coins')
 
-        get_coins_value_.return_value = 1.00
+        self.vm.valid_coins = {'a': 1, 'b': 2}
 
-        can_purchase = self.vm.can_purchase('apple')
+        self.vm.input_coin('c')
 
-        assert blink.called
-        nt.assert_true(can_purchase)
+        assert not add_coins.called
 
     @mock.patch('vending_machine.VendingMachine.add_coins')
     def test_add_coins_should_not_be_called_when_coin_is_invalid(self, add_coins_):
@@ -40,6 +37,30 @@ class VendingMachineTest(unittest.TestCase):
         self.vm.input_coin('a')
 
         assert add_coins_.called
+
+    @mock.patch('vending_machine.VendingMachine.add_coins')
+    def test_add_coins_should_be_called_when_coin_is_valid(self, add_coins_):
+        self.vm.valid_coins = {'a': 1, 'b': 2}
+
+        self.vm.input_coin('a')
+
+        assert add_coins_.called
+
+
+    @mock.patch('vending_machine.VendingMachine.get_coins_value')
+    def test_can_purchase_must_turn_green_light_when_purchase_is_valid(self, get_coins_value_):
+        blink = mock.MagicMock(spec=LED.blink)
+        self.vm_green_light.blink = blink
+
+        get_coins_value_.return_value = 1.00
+
+        can_purchase = self.vm.can_purchase('apple')
+
+        assert blink.called
+        nt.assert_true(can_purchase)
+
+
+
 
     def test_can_purchase_banana_when_coins_value_is_one_dollar(self):
         self.vm.get_coins_value = lambda: 1.0
