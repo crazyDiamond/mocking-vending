@@ -1,0 +1,9 @@
+deploy.sh
+pi.key
+pi.key.pub
+.git
+__pycache__
+cover
+.idea
+*.swp
+.coverage

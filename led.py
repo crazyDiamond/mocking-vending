@@ -2,7 +2,20 @@ from time import sleep
 
 
 class LED:
+    '''
+    This is an external package which we have no control over. Such tests could only be run on a RaspberryPi, or
+    a similar machine with a Broadcom GPIO controller.
 
+    You will need to mock each method of this class individually to use it in tests.
+
+    To Use In Tests:
+
+    self.my_led = mock.MagicMock(spec=LED, autospec=True)
+    blink = mock.MagicMock(spec=LED.blink)
+    self.my_led.blink = blink
+
+    Now you can assert that blink is called and what parameters it is called with
+    '''
     _pin = 0
 
     GREEN_LIGHT = 26
